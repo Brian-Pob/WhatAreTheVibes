@@ -67,7 +67,7 @@ window.onload = () => {
 
   // Set the attributes for the OpenGraph title
   ogTitle.setAttribute('property', 'og:title');
-  ogTitle.setAttribute('content', 'Your dynamically generated title goes here');
+  ogTitle.setAttribute('content', getData());
 
   // Append the OpenGraph title to the <head> element
   head.appendChild(ogTitle);
