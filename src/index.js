@@ -58,7 +58,7 @@ ${getData()}
 `;
 
 // Get a reference to the <head> element
-function setTitle() {
+window.onload = () => {
   // Get a reference to the <head> element
   var head = document.getElementsByTagName('head')[0];
 
@@ -71,5 +71,4 @@ function setTitle() {
 
   // Append the OpenGraph title to the <head> element
   head.appendChild(ogTitle);
-}
-document.onload(setTitle());
+};
