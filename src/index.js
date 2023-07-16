@@ -52,7 +52,7 @@ function getData() {
   ];
   return vibes[Math.floor(Math.random() * vibes.length)];
 }
-document.getElementById('app').innerHTML = `<pre>
+document.getElementById('app').innerHTML = `The vibes are: <pre>
 ${getData()}
 </pre>
 `;
