@@ -1,16 +1,72 @@
-@import 'open-props/animations';
-@import 'open-props/easings';
+@import 'open-props/style';
 
 body {
-  font-family: sans-serif;
+  --bg: var(--gradient-17);
+  --bg-opp: var(--gradient-8);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-size-2);
+
+  background-image: var(--bg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: var(--gray-0);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg: var(--gradient-8);
+    --bg-opp: var(--gradient-17);
+  }
+}
+
+body:has(#color-scheme:checked) {
+  --bg: var(--bg-opp);
+}
+
+main {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
 }
 
 main > div {
   margin: auto;
-  width: 50%;
+  width: 100%;
   text-align: center;
+}
+
+a {
+  color: var(--gray-0);
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s var(--ease-in-out-1);
+}
+
+a:hover,
+a:focus-visible {
+  border-color: var(--gray-0);
+}
+
+a:focus {
+  outline-color: transparent;
+}
+
+@media (max-width: 768px) {
+  main > div {
+    margin-top: 20svh;
+  }
+}
+
+#getVibe {
+  font-size: var(--font-size-4);
+  padding: 0.5rem 1rem;
 }
 
 #vibe {
   text-transform: lowercase;
+  font-size: var(--font-size-4);
+  font-family: var(--font-mono);
 }
