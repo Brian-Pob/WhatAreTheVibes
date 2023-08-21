@@ -4,6 +4,8 @@ function getData() {
   const vibes = [
     'Blissful',
     'Bold',
+    'Bussing',
+    'Capping',
     'Captivating',
     'Carefree',
     'Courageous',
@@ -19,6 +21,7 @@ function getData() {
     'Ethereal',
     'Euphoric',
     'Exciting',
+    'Fire',
     'Graceful',
     'Grounded',
     'Harmonious',
@@ -52,7 +55,16 @@ function getData() {
   ];
   return vibes[Math.floor(Math.random() * vibes.length)];
 }
-document.getElementById('app').innerHTML = `The vibes are: <pre>
+
+function getVibe() {
+  document.getElementById('app').innerHTML = `The vibes are: <pre>
 ${getData()}
 </pre>
 `;
+}
+
+window.onload = function () {
+  getVibe();
+};
+
+document.querySelector('#getVibe').addEventListener('click', getVibe);
