@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>What Are the Vibes?</title>
     <meta charset="UTF-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Are the Vibes?</title>
     <meta property="title" content="What are the vibes?" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:image" content="/emoji.png" />
     <meta property="og:url" content="https://whatarethevibes.netlify.app" />
     <meta property="og:title" content="What are the vibes?" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
-
   <body>
-    <h1>What are the vibes?</h1>
-    <div id="app"></div>
-    <p>It took me way too long to make this.</p>
-    <button id="getVibe">get a new vibe</button>
-    <script src="src/index.js"></script>
+    <main>
+      <div>
+        <h1>What are the vibes?</h1>
+
+        The vibes are:
+        <pre id="vibe">Vibing</pre>
+        <button id="getVibe">get a new vibe</button>
+        <script type="module" src="/main.js"></script>
+        <p>It took me way too long to make this.</p>
+        <p>Made with <a href="https://open-props.style/">OpenProps</a></p>
+      </div>
+    </main>
   </body>
 </html>

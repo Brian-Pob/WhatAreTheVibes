@@ -1,4 +1,4 @@
-import './styles.css';
+import './style.css';
 
 function getData() {
   const vibes = [
@@ -57,10 +57,16 @@ function getData() {
 }
 
 function getVibe() {
-  document.getElementById('app').innerHTML = `The vibes are: <pre>
-${getData()}
-</pre>
-`;
+  document.getElementById('vibe').innerHTML = `${getData()}`;
+  document.querySelector('#vibe').style.animation =
+    'var(--animation-shake-x) forwards';
+
+  document.querySelector('#getVibe').disabled = true;
+
+  setTimeout(() => {
+    document.querySelector('#vibe').style.animation = '';
+    document.querySelector('#getVibe').disabled = false;
+  }, 1000);
 }
 
 window.onload = function () {
