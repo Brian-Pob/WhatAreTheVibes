@@ -21,8 +21,20 @@ body {
   }
 }
 
-body:has(#color-scheme:checked) {
-  --bg: var(--bg-opp);
+input#color-scheme,
+label[for='color-scheme'] {
+  display: none;
+}
+
+@supports selector(:has(+ *)) {
+  body:has(#color-scheme:checked) {
+    --bg: var(--bg-opp);
+  }
+
+  input#color-scheme,
+  label[for='color-scheme'] {
+    display: inline;
+  }
 }
 
 main {
