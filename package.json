@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^4.4.5"
+    "@vite-pwa/assets-generator": "^0.2.4",
+    "vite": "latest",
+    "vite-plugin-mkcert": "^1.17.5",
+    "vite-plugin-pwa": "^0.19.6"
   },
   "dependencies": {
-    "open-props": "^1.5.13"
+    "open-props": "^1.6.21"
   }
 }
