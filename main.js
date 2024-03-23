@@ -1,109 +1,61 @@
-function getData() {
-  const vibes = [
-    "Blissful",
-    "Bold",
-    "Bussing",
-    "Busting",
-    "Capping",
-    "Captivating",
-    "Carefree",
-    "Courageous",
-    "Cozy",
-    "Curious",
-    "Dreamy",
-    "Dying",
-    "Dynamic",
-    "Eccentric",
-    "Ecstatic",
-    "Eepy",
-    "Eerie",
-    "Effervescent",
-    "Electric",
-    "Empathetic",
-    "Empowered",
-    "Enchanting",
-    "Enigmatic",
-    "Ethereal",
-    "Euphoric",
-    "Exciting",
-    "Fire",
+function useGrabBag(list) {
+  function grab(currentList) {
+    if (currentList.length === 0) {
+      return { selectedItem: null, newList: list };
+    }
+    const selectedItemIndex = Math.floor(Math.random() * currentList.length);
+    const selectedItem = currentList[selectedItemIndex];
+    const newList = currentList.filter(
+      (_, index) => index !== selectedItemIndex,
+    );
+    return { selectedItem, newList };
+  }
+  return grab;
+}
+
+function getVibe() {}
+
+window.onload = () => {
+  // Initialize the list and grab function
+  const initialList = [
     "For real life",
-    "Graceful",
-    "Grounded",
-    "Harmonious",
-    "Hateful",
-    "Heartfelt",
-    "Honest",
-    "Hopeful",
-    "Hopeless",
-    "Humble",
-    "Hypnotic",
-    "Hungry",
-    "Innocent",
-    "Inspiring",
-    "Intimate",
-    "Intriguing",
-    "Jubilant",
-    "Lively",
-    "Loving",
-    "Lucky",
-    "Lush",
-    "Magical",
-    "Majestic",
-    "Melancholic",
-    "Mystical",
-    "Nostalgic",
-    "Nurturing",
-    "Optimistic",
-    "Peaceful",
-    "Playful",
-    "Quirky",
-    "Radiant",
-    "Reflective",
-    "Refreshing",
-    "Resilient",
-    "Rustic",
-    "Sentimental",
-    "Serendipitous",
-    "Serene",
-    "Silly",
-    "Sincere",
-    "Sleepy",
-    "Starving",
-    "Sulking",
-    "Sultry",
-    "Terrific",
-    "Terrifying",
-    "Thoughtful",
-    "Thrilling",
-    "Tranquil",
-    "Unreal",
-    "Uplifting",
-    "Vexing",
-    "Vibing",
-    "Vibrant",
     "Wackadoo",
-    "Whimsical",
-    "Wistful",
+    "Tough",
+    "Cheeky",
+    "Fluffy",
+    "Bluey",
+    "Eepy",
+    "Trifficult",
+    "Squishy",
+    "Greeny",
+    "Wired",
+    "Tired",
+    "Caffeinated",
+    "Awesome",
   ];
-  return vibes[Math.floor(Math.random() * vibes.length)];
-}
+  const grab = useGrabBag(initialList);
 
-function getVibe() {
-  document.getElementById("vibe").innerHTML = `${getData()}`;
-  document.querySelector("#vibe").style.animation =
-    "var(--animation-shake-x) forwards";
+  // Current list starts as the initial list
+  let currentList = [...initialList];
 
-  document.querySelector("#getVibe").disabled = true;
+  document.querySelector("#getVibe").addEventListener("click", () => {
+    const { selectedItem, newList } = grab(currentList);
 
-  setTimeout(() => {
-    document.querySelector("#vibe").style.animation = "";
-    document.querySelector("#getVibe").disabled = false;
-  }, 1000);
-}
+    document.getElementById("vibe").innerHTML = `${selectedItem}`;
+    document.querySelector("#vibe").style.animation =
+      "var(--animation-shake-x) forwards";
 
-window.onload = function () {
-  getVibe();
+    document.querySelector("#getVibe").disabled = true;
+
+    setTimeout(() => {
+      document.querySelector("#vibe").style.animation = "";
+      document.querySelector("#getVibe").disabled = false;
+    }, 1000);
+
+    if (newList.length === 0) {
+      currentList = [...initialList]; // Reset the list
+    } else {
+      currentList = newList; // Update the current list with the new list
+    }
+  });
 };
-
-document.querySelector("#getVibe").addEventListener("click", getVibe);
